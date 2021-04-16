@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Time Entries</h1>
+<div id="timer-button">
+  <% if current_user.timer_running? %>
+    <%= render 'clock_out_button.erb' %>
+  <% else %>
+    <%= render 'clock_in_button.erb' %>
+  <% end %>
+</div>
+
+
+<h1>Your times</h1>
 
 <table>
   <thead>
