@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV['DB_POOL'] || ENV['RAILS_MAX_THREADS'] || 5 %>
+
+development:
+  <<: *default
+  database: trainual_timer_development
+
+test: &test
+  <<: *default
+  database: trainual_timer_test<%= ENV['TEST_ENV_NUMBER'] %>
+
+production:
+  <<: *default
