@@ -4,5 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'time_entries#index'
 
-  resources :time_entries, only: %i[index create edit update]
+  resources :time_entries, only: %i[index edit update] do
+    collection do
+      post :start_timer 
+      put :stop_timer
+    end  
+  end  
 end
