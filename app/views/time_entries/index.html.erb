@@ -25,7 +25,11 @@
       <tr>
         <td><%= formated_time(time_entry.starts_at) %></td>
         <td><%= formated_time(time_entry.finishes_at, 'Running...') %></td>
-        <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>
+        <td>
+          <% if time_entry.finishes_at %>
+            <%= link_to 'Edit', edit_time_entry_path(time_entry) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
