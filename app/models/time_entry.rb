@@ -3,7 +3,7 @@ class TimeEntry < ApplicationRecord
 
   validates :starts_at, presence: true
   validates :finishes_at, presence: true, if: -> { self.persisted? }
-  validate :only_one_running 
+  validate :only_one_running, if: -> { self.new_record? } 
 
   private
 
