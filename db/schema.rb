@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_175133) do
     t.bigint "user_id", null: false
     t.datetime "starts_at"
     t.datetime "finishes_at"
-    t.boolean "changed", default: false
+    t.boolean "edited", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_time_entries_on_user_id"
