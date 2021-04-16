@@ -10,14 +10,11 @@ class TimeEntriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @time_entry.update(time_entry_params)
-        format.html { redirect_to @time_entry, notice: "Time entry was successfully updated." }
-        format.json { render :show, status: :ok, location: @time_entry }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @time_entry.errors, status: :unprocessable_entity }
-      end
+    @time_entry.edited = true
+    if @time_entry.update(time_entry_params)
+      redirect_to time_entries_path, notice: "Time entry was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
