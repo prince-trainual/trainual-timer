@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
   has_many :time_entries, dependent: :destroy
 
+  def current_timer
+    time_entries.find_by(finishes_at: nil)
+  end  
+
   def timer_running?
-    TimeEntry.exists?(user_id: self.id, finishes_at: nil)
+    current_timer.present?
   end  
 end
