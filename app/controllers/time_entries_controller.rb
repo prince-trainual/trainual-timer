@@ -4,7 +4,7 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries or /time_entries.json
   def index
-    @time_entries = currenct_user.time_entries
+    @time_entries = current_user.time_entries
   end
 
   # GET /time_entries/1/edit
@@ -13,7 +13,7 @@ class TimeEntriesController < ApplicationController
 
   # POST /time_entries or /time_entries.json
   def create
-    @time_entry = currenct_user.time_entries.new(time_entry_params)
+    @time_entry = current_user.time_entries.new(time_entry_params)
 
     respond_to do |format|
       if @time_entry.save
@@ -42,7 +42,7 @@ class TimeEntriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_time_entry
-      @time_entry = currenct_user.time_entries.find(params[:id])
+      @time_entry = current_user.time_entries.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
